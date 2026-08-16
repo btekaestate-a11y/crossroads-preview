@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CONFIRM with owner (pre-launch checklist for this preview build):
+     1) Current street address — the only online match for this name + phone (1901 Pennsylvania Ave NW) is a Yelp listing marked CLOSED, and that address now hosts a different restaurant. No address is printed on this page until confirmed.
+     2) Whether the business currently operates under the name Crossroads.
+     3) Cuisine — the old closed listing was categorized American (Traditional), not Ethiopian. This build follows the client's restaurant/lounge brief; verify the Ethiopian positioning before launch.
+     4) Hours — none verifiable online; all hours on this page are placeholders.
+     5) Menu — no signature dishes verifiable online; the plates section is a clearly-labeled sample repertoire at market pricing.
+     6) No ratings or verbatim reviews exist online, so this page contains no review quotes and no rating claims. -->
+<title>Crossroads Ethiopian Restaurant | Washington, DC</title>
+<meta name="description" content="Ethiopian restaurant and lounge in Washington, DC — shared platters, the buna ceremony, and evenings that run long. Call (202) 331-4155.">
+<!-- canonical omitted until domain confirmed -->
+<meta property="og:title" content="Crossroads — Restaurant &amp; Lounge, Washington DC">
+<meta property="og:description" content="A meeting-point restaurant and lounge for Washington, DC — shared platters, buna, long evenings. Call (202) 331-4155.">
+<meta property="og:type" content="restaurant">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A1224'/%3E%3Cpath d='M32 12v40M12 32h40' stroke='%23D9A441' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Karla:wght@400;500;600;700&family=Noto+Serif+Ethiopic:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* Crossroads palette — night-out scheme over the shared system.
+   Midnight aubergine rooms, crimson heat, brass-gold light. AA checked. */
+:root{
+  --parchment:#F5EDE3;
+  --parchment-deep:#ECDFCE;
+  --espresso:#1A1224;
+  --espresso-soft:#261A33;
+  --ink:#251B22;
+  --cream:#F4EADC;
+  --berbere:#A62639;
+  --berbere-deep:#851B2C;
+  --tej:#D9A441;
+  --gomen:#40584F;
+  --muted:#6E5A63;
+  --muted-dark:#BBA6AE;
+}
+/* tibeb recolored for the night palette */
+.tibeb{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='14' viewBox='0 0 56 14'%3E%3Cpath d='M0 7 L7 0 L14 7 L7 14 Z M14 7 L21 0 L28 7 L21 14 Z M28 7 L35 0 L42 7 L35 14 Z M42 7 L49 0 L56 7 L49 14 Z' fill='%23D9A441' fill-opacity='0.9'/%3E%3Ccircle cx='7' cy='7' r='1.6' fill='%231A1224'/%3E%3Ccircle cx='21' cy='7' r='1.6' fill='%23A62639'/%3E%3Ccircle cx='35' cy='7' r='1.6' fill='%231A1224'/%3E%3Ccircle cx='49' cy='7' r='1.6' fill='%23A62639'/%3E%3C/svg%3E")}
+/* hero art — ember, brass and a violet late-night glow (no external images) */
+.hero__art{background:
+  radial-gradient(ellipse 58% 44% at 70% 40%, rgba(166,38,57,.38), transparent 62%),
+  radial-gradient(ellipse 46% 38% at 24% 70%, rgba(217,164,65,.18), transparent 65%),
+  radial-gradient(ellipse 42% 32% at 48% 16%, rgba(122,84,158,.16), transparent 70%),
+  var(--espresso)}
+.photo-slot{background:linear-gradient(160deg, rgba(166,38,57,.2), rgba(26,18,36,.55)), var(--espresso-soft); border-color:rgba(217,164,65,.28)}
+.dish__market{font-family:var(--font-display);font-style:italic;color:var(--tej);font-size:18px;white-space:nowrap}
+.lounge__grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:var(--space-gap);align-items:center}
+@media (max-width:900px){.lounge__grid{grid-template-columns:1fr}}
+.numbers__head{text-align:center;margin-bottom:clamp(36px,5vw,56px)}
+.word{font-family:var(--font-ethiopic);font-size:27px;color:var(--tej);line-height:1}
+.review p strong{color:var(--berbere)}
+/* signature steam (client-mandated block, verbatim) */
+.steam{position:absolute;left:50%;bottom:78%;width:110px;height:150px;pointer-events:none;z-index:2;transform:translateX(-50%)}
+.steam i{position:absolute;bottom:0;left:calc(22%*var(--n));width:14px;height:44%;background:linear-gradient(to top,rgba(255,247,236,0),rgba(255,247,236,.55),rgba(255,247,236,0));border-radius:50%;filter:blur(6px);opacity:0;animation:steam-rise 3.4s ease-in-out calc(var(--n)*.55s) infinite}
+@keyframes steam-rise{0%{transform:translateY(0) scaleX(1);opacity:0}25%{opacity:.75}60%{opacity:.35}100%{transform:translateY(-120px) translateX(12px) scaleX(1.9);opacity:0}}
+@media (prefers-reduced-motion:reduce){.steam i{animation:none}}
+</style>
+<!-- CONFIRM with owner: JSON-LD kept deliberately minimal. Street address, hours, and servesCuisine are omitted because none are verifiable (old listing closed; cuisine categorized American (Traditional) there). No aggregateRating — no ratings exist online. Phone is client-provided and authoritative. -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Restaurant",
+"name": "Crossroads",
+"description": "Restaurant and lounge in Washington, DC.",
+"telephone": "+12023314155",
+"address": {
+"@type": "PostalAddress",
+"addressLocality": "Washington",
+"addressRegion": "DC",
+"addressCountry": "US"
+}
+}
+</script>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js')</script>
+
+<nav class="nav" aria-label="Main">
+<div class="wrap nav__inner">
+<a class="nav__brand" href="#top">Crossroads <span class="amharic" aria-hidden="true">መገናኛ</span></a>
+<div class="nav__links">
+<a class="nav__link" href="#crossroads">The Idea</a>
+<a class="nav__link" href="#plates">The Plates</a>
+<a class="nav__link" href="#lounge">The Lounge</a>
+<a class="nav__link" href="#visit">Visit</a>
+<a class="btn btn--berbere nav__cta" href="tel:+12023314155">Call Ahead</a>
+</div>
+<button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#crossroads">The Idea</a>
+<a href="#plates">The Plates</a>
+<a href="#lounge">The Lounge</a>
+<a href="#visit">Visit</a>
+<p class="mobile-menu__note">Washington, DC · details being confirmed · (202) 331-4155</p>
+</div>
+
+<header class="hero" id="top">
+<div class="hero__media" aria-hidden="true">
+<!-- Hero visual: CSS gradient art placeholder. REPLACE with real photography of the room / a platter mid-service before launch. data-replace="hero-lounge-platter" -->
+<div class="hero__art" data-kenburns data-replace="hero-lounge-platter"></div>
+<div class="hero__scrim"></div>
+<div class="steam" aria-hidden="true" style="left:70%;bottom:42%"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i></div>
+</div>
+<div class="wrap">
+<p class="hero__amharic gs-hero"><span lang="am">መገናኛ</span> — megenagna. the junction where everyone meets.</p>
+<h1 class="display-xl gs-hero">All roads.<br>One table.<br><span class="accent">Meet here.</span></h1>
+<!-- CONFIRM with owner: Ethiopian positioning — see head checklist item 3. -->
+<p class="hero__lede gs-hero">Crossroads is the answer to the group chat that cannot pick a spot — an Ethiopian restaurant and lounge for Washington, where dinner arrives on one shared platter and the evening is under no obligation to end with it.</p>
+<div class="hero__ctas gs-hero">
+<a class="btn btn--berbere" href="tel:+12023314155" data-magnetic>
+Call (202) 331-4155
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.6 2Z"/></svg>
+</a>
+<a class="btn btn--ghost" href="#plates">Start with the plates</a>
+</div>
+<p class="hero__rating gs-hero">Dinner · buna · lounge — Washington, DC</p>
+</div>
+<p class="hero__scroll" aria-hidden="true">scroll</p>
+</header>
+
+<div class="tibeb" role="presentation"></div>
+
+<section class="band story" id="crossroads">
+<div class="wrap">
+<div>
+<p class="eyebrow gs-reveal">The idea</p>
+<h2 class="display-lg gs-reveal">Named for the place <em class="flavor">everyone passes through</em></h2>
+<p class="lede gs-reveal" style="margin-top:22px">Addis Ababa has Megenagna — the junction the whole city eventually moves through. Every city needs one: the spot that settles the where-are-we-meeting debate before it starts. Crossroads is built to be that answer for Washington.</p>
+<p class="muted gs-reveal" style="margin-top:16px;max-width:var(--measure)">Not a shrine and not a food court — a working room where the platter is shared, the coffee is a ceremony, and the evening itself is the point.</p>
+</div>
+<div class="story__facts">
+<div class="fact gs-reveal">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>
+<div><strong>Order for the table</strong><span>Platters land in the middle — dinner here is a group project</span></div>
+</div>
+<div class="fact gs-reveal">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M17 8h1a3 3 0 0 1 0 6h-1M5 8h12v6a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5Z"/><path d="M9 2v3M13 2v3"/></svg>
+<div><strong>Buna, done properly</strong><span>Roasted, brewed in the jebena, poured in rounds — never rushed</span></div>
+</div>
+<div class="fact gs-reveal">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 13.5A8.5 8.5 0 1 1 10.5 3a7 7 0 0 0 10.5 10.5Z"/></svg>
+<div><strong>Half restaurant, half lounge</strong><span>The name is the concept — dinner room and late room in one</span></div>
+</div>
+<div class="fact gs-reveal">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.6 2Z"/></svg>
+<div><strong>One number for everything</strong><span>Tables, questions, big-group planning — (202) 331-4155</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="tibeb tibeb--thin" role="presentation"></div>
+
+<section class="band band--dark dishes" id="plates">
+<div class="wrap">
+<div class="dishes__head">
+<div>
+<p class="eyebrow gs-reveal">The plates</p>
+<h2 class="display-lg gs-reveal">A repertoire built for <em class="flavor">hands, not forks</em></h2>
+</div>
+<a class="btn btn--ghost gs-reveal" href="tel:+12023314155">Ask about tonight</a>
+</div>
+<!-- CONFIRM with owner: no signature dishes are verifiable online. The list below is a SAMPLE of the classic repertoire, clearly disclaimed on-page. Replace with the kitchen's real menu, and confirm cuisine, before launch. Prices intentionally read market — never invent prices. -->
+<p class="muted gs-reveal" style="max-width:var(--measure);margin-bottom:clamp(28px,4vw,44px)">Sample of the repertoire — the owner is finalizing the real menu for this page. Until it lands, every plate below reads at market price; ask when you call.</p>
+<article class="dish gs-reveal">
+<span class="dish__num">01</span>
+<div>
+<p class="dish__amharic" lang="am">የዶሮ ወጥ</p>
+<h3>Doro Wat</h3>
+<p>The slow one — chicken braised down in berbere and onions until the sauce turns dark and serious, a whole egg waiting at the bottom like a reward.</p>
+<div class="dish__tags"><span class="tag tag--fav">Classic</span><span class="tag tag--spice">Berbere heat</span></div>
+</div>
+<span class="dish__market">market</span>
+</article>
+<article class="dish gs-reveal">
+<span class="dish__num">02</span>
+<div>
+<p class="dish__amharic" lang="am">ክትፎ</p>
+<h3>Kitfo</h3>
+<p>Hand-minced beef folded through spiced butter and mitmita — ordered leb leb or fully traditional. The plate connoisseurs use to judge a kitchen.</p>
+<div class="dish__tags"><span class="tag tag--spice">Mitmita</span></div>
+</div>
+<span class="dish__market">market</span>
+</article>
+<article class="dish gs-reveal">
+<span class="dish__num">03</span>
+<div>
+<p class="dish__amharic" lang="am">አዋዜ ጥብስ</p>
+<h3>Awaze Tibs</h3>
+<p>Cubes seared hard and tossed in awaze chile paste — the plate that pairs best with a cold drink and a long argument about the playlist.</p>
+<div class="dish__tags"><span class="tag tag--spice">Brings heat</span></div>
+</div>
+<span class="dish__market">market</span>
+</article>
+<article class="dish gs-reveal">
+<span class="dish__num">04</span>
+<div>
+<p class="dish__amharic" lang="am">በያይነቱ</p>
+<h3>Beyaynetu</h3>
+<p>The full vegan spread on one injera — lentils, collards, split peas, cabbage — proof the meatless side of the tradition is nobody&#8217;s afterthought.</p>
+<div class="dish__tags"><span class="tag tag--vegan">Vegan</span></div>
+</div>
+<span class="dish__market">market</span>
+</article>
+<article class="dish gs-reveal">
+<span class="dish__num">05</span>
+<div>
+<p class="dish__amharic" lang="am">ጠጅ</p>
+<h3>Tej</h3>
+<p>House honey wine — golden, floral, deceptively easygoing. The lounge&#8217;s traditional opening move.</p>
+<div class="dish__tags"><span class="tag tag--fav">Lounge pour</span></div>
+</div>
+<span class="dish__market">market</span>
+</article>
+</div>
+</section>
+
+<section class="band band--deep" id="lounge">
+<div class="wrap lounge__grid">
+<div class="photo-slot photo-slot--tall gs-reveal">
+<span>Replace with photography — jebena on the coals, buna mid-pour, low light</span>
+<div class="steam" aria-hidden="true" style="left:50%;bottom:46%"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i></div>
+</div>
+<div>
+<p class="eyebrow gs-reveal">The lounge</p>
+<h2 class="display-lg gs-reveal">Dinner is <em class="flavor">act one</em></h2>
+<p class="lede gs-reveal" style="margin-top:20px">Most restaurants end when the plates do. Crossroads is built like the junction it is named for — people arrive for dinner, collide with people they know, and stay for the part of the night where nobody checks the time.</p>
+<p class="muted gs-reveal" style="margin-top:16px">Buna on the coals, tej in the glasses, a room that gets better as it gets louder.</p>
+</div>
+</div>
+<div class="wrap wrap--wide" style="margin-top:52px">
+<div class="ritual__track gs-reveal" tabindex="0" aria-label="How the evening moves at Crossroads, four stages, scrolls horizontally">
+<div class="ritual__card">
+<span class="ritual__step">፩</span>
+<h3>Sit down hungry</h3>
+<p>Come as a group or become part of one. Menus here are a negotiation — order for the table, not for yourself.</p>
+</div>
+<div class="ritual__card">
+<span class="ritual__step">፪</span>
+<h3>Hands in</h3>
+<p>One platter lands in the middle. Tear the injera, scoop what is closest, trade corners with your neighbor.</p>
+</div>
+<div class="ritual__card">
+<span class="ritual__step">፫</span>
+<h3>The jebena arrives</h3>
+<p>Coffee roasted in the room, brewed in the clay pot, poured in three rounds — abol, tona, baraka. Leaving after round one is technically allowed.</p>
+</div>
+<div class="ritual__card">
+<span class="ritual__step">፬</span>
+<h3>The room turns over</h3>
+<p>Plates clear, lights drop, the volume finds its evening setting. This is the lounge half of the name.</p>
+</div>
+</div>
+<p class="ritual__hint">Drag sideways — the night keeps going →</p>
+</div>
+</section>
+
+<section class="band band--dark numbers">
+<div class="wrap numbers__head">
+<p class="eyebrow gs-reveal">How the tradition counts an evening</p>
+</div>
+<div class="wrap">
+<div class="number gs-reveal"><b data-count="3">0</b><span>rounds of buna — abol, tona, baraka</span></div>
+<div class="number gs-reveal"><b data-count="1">0</b><span>platter in the middle — everyone&#8217;s hands</span></div>
+<div class="number gs-reveal"><b data-count="0">0</b><span>forks required</span></div>
+</div>
+</section>
+
+<section class="band reviews" id="vocabulary">
+<div class="reviews__head wrap">
+<p class="eyebrow gs-reveal">House vocabulary</p>
+<h2 class="display-lg gs-reveal">Words worth knowing <em class="flavor">before the first round</em></h2>
+</div>
+<div class="marquee" data-marquee>
+<div class="review"><span class="word" lang="am">ቡና</span><p><strong>buna</strong> — coffee, born in Ethiopia, roasted in the room and poured three times.</p></div>
+<div class="review"><span class="word" lang="am">እንጀራ</span><p><strong>injera</strong> — the sour flatbread that is plate, fork, and napkin in one.</p></div>
+<div class="review"><span class="word" lang="am">ጉርሻ</span><p><strong>gursha</strong> — feeding a friend by hand. The bigger the bite, the deeper the friendship.</p></div>
+<div class="review"><span class="word" lang="am">ጠጅ</span><p><strong>tej</strong> — honey wine. Golden, smooth, and not to be underestimated.</p></div>
+<div class="review"><span class="word" lang="am">መገናኛ</span><p><strong>megenagna</strong> — Addis Ababa&#8217;s famous junction; shorthand for where everyone meets.</p></div>
+<div class="review"><span class="word" lang="am">ጥብስ</span><p><strong>tibs</strong> — meat seared in a screaming-hot pan, best eaten immediately.</p></div>
+<div class="review"><span class="word" lang="am">እስክስታ</span><p><strong>eskista</strong> — the shoulder dance. It tends to find you after the second tej.</p></div>
+</div>
+<p class="reviews__note">Learn two and use them at the table — the fastest known route to regular status.</p>
+</section>
+
+<div class="tibeb" role="presentation"></div>
+
+<section class="band band--dark visit" id="visit">
+<div class="wrap">
+<div>
+<p class="eyebrow gs-reveal">Visit</p>
+<h2 class="display-lg gs-reveal">Find <em class="flavor">the junction</em></h2>
+<div class="visit__block gs-reveal" style="margin-top:34px">
+<h3>Location</h3>
+<!-- CONFIRM with owner: current street address. The only address found online for this name + phone (1901 Pennsylvania Ave NW, Washington, DC 20006) belongs to a listing marked CLOSED, and that address now hosts a different restaurant. Do not publish an address until the owner confirms it. -->
+<address>Washington, DC<br><span class="muted">Street address being confirmed</span></address>
+<p class="visit__confirm">Placeholder — confirm the current street address with the owner before launch. The only address on record online belongs to a listing marked closed.</p>
+</div>
+<div class="visit__block gs-reveal">
+<h3>One number</h3>
+<a class="visit__phone" href="tel:+12023314155">(202) 331-4155</a>
+</div>
+</div>
+<div>
+<div class="visit__block gs-reveal">
+<h3>Hours</h3>
+<!-- CONFIRM with owner: hours. Nothing verifiable online; an old (closed) listing suggested weekday lunch/dinner and weekend brunch, unconfirmed. Rows below are placeholders, not claims. -->
+<table class="hours">
+<tr><td>Dinner</td><td>call to confirm</td></tr>
+<tr><td>Lounge</td><td>call to confirm</td></tr>
+<tr><td>Weekend brunch</td><td>call to confirm</td></tr>
+</table>
+<p class="visit__confirm">Placeholder — no hours could be verified online. Confirm the full weekly schedule, including whether brunch is served, before launch.</p>
+</div>
+<div class="visit__block gs-reveal">
+<h3>Private evenings</h3>
+<p class="muted">The meeting-point concept scales — birthdays, send-offs, the whole room if the night calls for it. Call to talk dates.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band cta-band">
+<div class="wrap">
+<span class="amharic gs-reveal" lang="am">እንገናኝ</span>
+<h2 class="display-lg gs-reveal">Tonight has to happen <em class="flavor">somewhere.</em></h2>
+<div class="cta-band__actions gs-reveal">
+<a class="btn btn--berbere" href="tel:+12023314155" data-magnetic>Call (202) 331-4155</a>
+<a class="btn btn--ghost-dark" href="#plates">Start with the plates</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<p>© <span id="year">2026</span> Crossroads · Washington, DC</p>
+<p>Preview build — address, hours, and menu pending owner confirmation</p>
+<p><a href="tel:+12023314155">(202) 331-4155</a> · <a href="#plates">The Plates</a></p>
+</div>
+</footer>
+
+<div class="callbar">
+<a class="btn btn--berbere" href="tel:+12023314155">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 3 .7a2 2 0 0 1 1.6 2Z"/></svg>
+Call Ahead — (202) 331-4155
+</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="js/site.js" defer></script>
+</body>
+</html>
